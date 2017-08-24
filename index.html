@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+	<!-- 
+		La libreria react.js -> la usamos para crear componentes
+		La libreria react-dom.js -> la usamos para usar los componentes
+	--->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>
+    <script>
+        //Creamos el componente Hola que imprime en un h1 Hola Sebas
+        function Hola(props){
+            const name = props.name;
+            return React.DOM.h1({id:'Title'}, `Hola ${name}`);
+        }
+
+        //Instanciamos el componente Hola y le pasamos los props
+        const hola = React.createElement(Hola, {name:'Sebas'});
+
+        //Mostramos en la ui
+        ReactDOM.render(hola, document.getElementById('app'));
+
+        //Cambiemos el mensaje pasado un segundo
+        setTimeout(
+            () => {
+                ReactDOM.render(
+                    React.createElement(Hola, {name:'Sebas!'}),
+                    document.getElementById('app')
+                )
+        }, 1000);
+		
+		//para que funcione en los navegadores viejos ,
+        //cambiar las const por var
+        //el string literal por 'Hola' + name
+        //Y en la funcion del timeout cambiarla por una funcion anonima
+
+    </script>
+</body>
+</html>
